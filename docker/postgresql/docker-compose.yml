@@ -1,0 +1,11 @@
+version: '3.7'
+services:  
+  postgresql:
+    image: postgres:latest
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_PASSWORD: KlaraUkralaKlarnet
+      POSTGRES_USER: Karl
+      POSTGRES_DB: sample-app
+
