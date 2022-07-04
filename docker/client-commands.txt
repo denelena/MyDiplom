@@ -1,0 +1,3 @@
+psql --dbname=sample-app --username=Karl -W
+mysql -u Karl -p sample-app
+
