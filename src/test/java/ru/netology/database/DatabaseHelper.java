@@ -14,9 +14,9 @@ public class DatabaseHelper {
     private static String dbPwd = "KlaraUkralaKlarnet";
 
 
-    public static void ClearTables(DbConnectionKind cnnKind) {
+    public static void ClearTables(String datasource, String username, String pwd) {
         try {
-            Connection cnn = getDbConnection(cnnKind);
+            Connection cnn = getDbConnection(datasource, username, pwd);
             Statement dbCommand = cnn.createStatement();
             dbCommand.execute("delete from payment_entity;");
             dbCommand.execute("delete from credit_request_entity;");
@@ -25,10 +25,10 @@ public class DatabaseHelper {
         }
     }
 
-    public static ArrayList<OrderEntity> getAllOrders(DbConnectionKind cnnKind) {
+    public static ArrayList<OrderEntity> getAllOrders(String datasource, String username, String pwd) {
         ArrayList<OrderEntity> entities = new ArrayList<OrderEntity>();
         try {
-            Connection cnn = getDbConnection(cnnKind);
+            Connection cnn = getDbConnection(datasource, username, pwd);
             PreparedStatement dbCommand = cnn.prepareStatement("select * from order_entity;");
 
             ResultSet rs = dbCommand.executeQuery();
@@ -44,10 +44,10 @@ public class DatabaseHelper {
         return entities;
     }
 
-    public static ArrayList<PaymentEntity> getAllPayments(DbConnectionKind cnnKind) {
+    public static ArrayList<PaymentEntity> getAllPayments(String datasource, String username, String pwd) {
         ArrayList<PaymentEntity> entities = new ArrayList<PaymentEntity>();
         try {
-            Connection cnn = getDbConnection(cnnKind);
+            Connection cnn = getDbConnection(datasource, username, pwd);
             PreparedStatement dbCommand = cnn.prepareStatement("select * from payment_entity;");
 
             ResultSet rs = dbCommand.executeQuery();
@@ -64,10 +64,10 @@ public class DatabaseHelper {
         return entities;
     }
 
-    public static ArrayList<CreditRequestEntity> getAllCreditRequests(DbConnectionKind cnnKind) {
+    public static ArrayList<CreditRequestEntity> getAllCreditRequests(String datasource, String username, String pwd) {
         ArrayList<CreditRequestEntity> entities = new ArrayList<CreditRequestEntity>();
         try {
-            Connection cnn = getDbConnection(cnnKind);
+            Connection cnn = getDbConnection(datasource, username, pwd);
             PreparedStatement dbCommand = cnn.prepareStatement("select * from credit_request_entity;");
 
             ResultSet rs = dbCommand.executeQuery();
@@ -84,9 +84,8 @@ public class DatabaseHelper {
     }
 
 
-    private static Connection getDbConnection(DbConnectionKind cnnKind) throws SQLException {
-        String dbUrl = (cnnKind == DbConnectionKind.MySql) ? dbUrlMysql : dbUrlPostgreSql;
-        Connection cnn = DriverManager.getConnection(dbUrl, dbUser, dbPwd);
+    private static Connection getDbConnection(String datasource, String username, String pwd) throws SQLException {
+        Connection cnn = DriverManager.getConnection(datasource, username, pwd);
         return cnn;
     }
 }

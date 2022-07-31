@@ -38,7 +38,14 @@
 
         java -jar aqa-shop.jar --spring.datasource.url=jdbc:mysql://localhost:3306/sample-app
 
-### D. Открываем проект MyDiplom" в "IDEA"  и запускаем тесты.
+### D. Открываем проект MyDiplom" в "IDEA"  и запускаем тесты:
+* На Windows системаx:  в директории `MyDiplom` запустить .bat файл:
+
+        runalltests-mysql.bat
+
+* На других ОС: зайти в директорию `MyDiplom` и выполнить команду
+
+        gradlew test -Dusername=Karl -Dpassword=KlaraUkralaKlarnet -Ddatasource=jdbc:mysql://localhost:3306/sample-app
 
 # 2. Запуск тестируемого приложения в режиме работы с PostgreSql
 ### A. Запустить симулятор банковского сервиса на порту 9999
@@ -64,4 +71,13 @@
 
         java -jar aqa-shop.jar --spring.datasource.url=jdbc:postgresql://localhost:5432/sample-app
 
-### D. Открываем проект MyDiplom" в "IDEA"  и запускаем тесты.
+### D. Открываем проект MyDiplom" в "IDEA"  и запускаем тесты:
+* На Windows системаx:  в директории `MyDiplom` запустить .bat файл:
+
+        runalltests-postgresql.bat
+
+* На других ОС: зайти в директорию `MyDiplom` и выполнить команду
+
+        gradlew test -Dusername=Karl -Dpassword=KlaraUkralaKlarnet -Ddatasource=jdbc:postgresql://localhost:5432/sample-app
+
+
