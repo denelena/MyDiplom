@@ -16,7 +16,6 @@ public class CardInfo {
         this.cardYear = cardYear;
     }
 
-
     public String getCardNumber() {
         return cardNumber;
     }
@@ -35,5 +34,25 @@ public class CardInfo {
 
     public String getCardCvv() {
         return cardCvv;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    public void setCardMonth(String cardMonth) {
+        this.cardMonth = cardMonth;
+    }
+
+    public void setCardYear(String cardYear) {
+        this.cardYear = cardYear;
+    }
+
+    public void setCardOwner(String cardOwner) {
+        this.cardOwner = cardOwner;
+    }
+
+    public void setCardCvv(String cardCvv) {
+        this.cardCvv = cardCvv;
     }
 }

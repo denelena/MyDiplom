@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import ru.netology.pages.CardPage;
 
 //This class contains tests that verify correctness of SUT writing to the database
 @DisplayName("AppDbTests: This class contains tests that verify correctness of SUT writing to the database")
@@ -38,7 +39,9 @@ public class AppDbTests {
     @DisplayName("Should make successful buy order; expecting 1 new row in 'payment_entity' with status='APPROVED' and 1 new row in 'order_entity' linked by a foreign key.")
     public void shouldAnalyzeDatabaseAfterValidCardBuyOrder(){
         ApplicationPage appPage = new ApplicationPage();
-        appPage.enterCardAndProceed(true, true);
+        CardPage cardPage = appPage.showCardFormWithBuyBtn();
+
+        cardPage.enterCardAndProceed(true);
 
         sleep(15000);
 
@@ -59,7 +62,9 @@ public class AppDbTests {
     @DisplayName("Should make failed buy order; expecting 1 new row in 'payment_entity' with status='DECLINED' and 1 new row in 'order_entity' linked by a foreign key.")
     public void shouldAnalyzeDatabaseAfterInvalidalidCardBuyOrder(){
         ApplicationPage appPage = new ApplicationPage();
-        appPage.enterCardAndProceed(false, true);
+        CardPage cardPage = appPage.showCardFormWithBuyBtn();
+
+        cardPage.enterCardAndProceed(false);
 
         sleep(15000);
 
@@ -79,7 +84,8 @@ public class AppDbTests {
     @DisplayName("Should make successful credit order; expecting 1 new row in 'credit_request_entity' with status='APPROVED' and 1 new row in 'order_entity' linked by a foreign key.")
     public void shouldAnalyzeDatabaseAfterValidCardCreditOrder(){
         ApplicationPage appPage = new ApplicationPage();
-        appPage.enterCardAndProceed(true, false);
+        CardPage cardPage = appPage.showCardFormWithCreditBtn();
+        cardPage.enterCardAndProceed(true);
 
         sleep(15000);
 
@@ -97,7 +103,8 @@ public class AppDbTests {
     @DisplayName("Should make failed credit order; expecting 1 new row in 'credit_request_entity' with status='DECLINED' and 1 new row in 'order_entity' linked by a foreign key.")
     public void shouldAnalyzeDatabaseAfterInvalidCardCreditOrder(){
         ApplicationPage appPage = new ApplicationPage();
-        appPage.enterCardAndProceed(false, false);
+        CardPage cardPage = appPage.showCardFormWithCreditBtn();
+        cardPage.enterCardAndProceed(false);
 
         sleep(15000);
 
